@@ -1,11 +1,13 @@
 import React from 'react'
+import CardWeather from "../components/CardWeather"
 
-const weather = () => {
+const Weather = () => {
   return (
-    <div>
-      WEATHER HERE
+    <div >
+      <CardWeather/>
+      
     </div>
   )
 }
 
-export default weather
+export default Weather
