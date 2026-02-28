@@ -17,7 +17,7 @@
 <section>
     <h2>🚀 Project Overview</h2>
     <p>
-        <span class="highlight">WeatherAndTime</span> is a full-stack web application built with the MERN stack 
+        <span class="highlight">WeatherAndTime</span> is a web application built with 
         ( React.js,tailwindcss).  
         It allows users to search for any city and get real-time weather data and local time information.
     </p>
