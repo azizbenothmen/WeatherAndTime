@@ -15,6 +15,7 @@ const CardWeather = () => {
     try {
       const { data } = await axios.get(`${apiUrl}${name}&aqi=no`);
       if (data) {
+        console.log(data);
         SetIcon(data.current.condition.icon);
         setTime(data.location.localtime.substr(-5));
         setValue(data.current.temp_c);
@@ -28,8 +29,8 @@ const CardWeather = () => {
 
   return (
     <form onSubmit={fetchWeather}>
-      <div className="min-h-screen w-full flex items-center justify-center font-normal px-4 py-8">
-        <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl p-8 sm:p-12 bg-blue-500 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden">
+      <div className="min-h-screen w-full flex items-center justify-center font-normal px-4 py-5">
+        <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl p-8 sm:p-12 bg-blue-500 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden translate-y-12">
           <div className="absolute -top-16 -right-16 w-40 h-40 sm:w-52 sm:h-52 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
 
           <div className="text-4xl sm:text-5xl text-center mb-3">
