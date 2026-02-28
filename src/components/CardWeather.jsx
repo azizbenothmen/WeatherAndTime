@@ -1,31 +1,33 @@
 import { useState } from "react";
 import axios from "axios";
 
-
 const CardWeather = () => {
   const [name, setName] = useState("");
-  const [value,setValue]=useState(0);
+  const [value, setValue] = useState(null);
+  const [city, setCity] = useState("");
+  const [Time,setTime]=useState("");
+  const [showBanner, setShowBanner] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URI;
- console.log(apiUrl);
-  const fetchWeather=async(e)=>{
-    console.log("SALIIII");
+
+  const fetchWeather = async (e) => {
     e.preventDefault();
     try {
-      const {data}= await axios.get(`${apiUrl} ${name}&aqi=no`);
-      if(data){
-        console.log(data.current.temp_c);
+      const { data } = await axios.get(`${apiUrl}${name}&aqi=no`);
+      if (data) {
+        console.log(data.location.localtime.substr(-5));
+        setTime(data.location.localtime.substr(-5));
         setValue(data.current.temp_c);
+        setCity(data.location.name);
+        setShowBanner(true);
       }
     } catch (error) {
       console.log(error.message);
-      
     }
-
-  }
+  };
 
   return (
     <form onSubmit={fetchWeather}>
-      <div className="min-h-screen w-full  flex items-center justify-center font-serif px-4 py-8">
+      <div className="min-h-screen w-full flex items-center justify-center font-normal px-4 py-8">
         <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl p-8 sm:p-12 bg-blue-500 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden">
           <div className="absolute -top-16 -right-16 w-40 h-40 sm:w-52 sm:h-52 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
 
@@ -57,7 +59,30 @@ const CardWeather = () => {
           >
             Chercher
           </button>
-          <h1>LA TEMPERTURE EST {value}</h1>
+
+          {showBanner && value !== null && (
+            <div className="mt-6 animate-fade-in flex justify-between">
+              <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
+                <p className="text-white text-xs uppercase tracking-widest mb-1">
+                  🌍 {city}
+                </p>
+                <p className="text-white text-4xl font-bold tracking-tight">
+                  {value}°C
+                </p>
+                <p className="text-white/50 text-xs mt-1">
+                  Température actuelle
+                </p>
+              </div>
+              <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
+                <p className="text-white text-4xl font-bold tracking-tight translate-y-4">
+                  {Time}
+                </p>
+                <p className="text-white/50 text-xs mt-1 translate-y-6">
+                  Temps actuel
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </form>
