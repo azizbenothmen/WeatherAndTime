@@ -41,10 +41,7 @@
     </ul>
 </section>
 
-<section>
-    <h2>📡 Example API Endpoint</h2>
-    <code>GET /api/weather/:city</code>
-</section>
+
 
 <section>
     <h2>🔐 Security</h2>
