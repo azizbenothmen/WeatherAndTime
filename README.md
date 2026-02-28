@@ -5,52 +5,7 @@
     <title>WeatherAndTime - MERN Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            background: #1e3a8a;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        section {
-            padding: 30px;
-            margin: 20px auto;
-            max-width: 900px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #1e3a8a;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        code {
-            background: #eef2ff;
-            padding: 5px 8px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #1e3a8a;
-            color: white;
-            margin-top: 40px;
-        }
-        .highlight {
-            color: #2563eb;
-            font-weight: bold;
-        }
-    </style>
+   
 </head>
 
 <body>
