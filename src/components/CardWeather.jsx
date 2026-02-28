@@ -33,7 +33,7 @@ const CardWeather = () => {
           <div className="absolute -top-16 -right-16 w-40 h-40 sm:w-52 sm:h-52 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
 
           <div className="text-4xl sm:text-5xl text-center mb-3">
-            <img src={Icon} className="translate-x-25 h-40 w-40"/>
+            <img src={Icon} className="translate-x-23 h-40 w-40"/>
           </div>
 
           <h1 className="text-center text-white text-xl sm:text-2xl font-bold tracking-wide mb-1">
