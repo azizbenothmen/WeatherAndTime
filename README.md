@@ -12,14 +12,14 @@
 
 <header>
     <h1>🌦️ WeatherAndTime</h1>
-    <p>MERN Stack Weather Application using Weather API</p>
+    <p> Weather Application using Weather API</p>
 </header>
 
 <section>
     <h2>🚀 Project Overview</h2>
     <p>
         <span class="highlight">WeatherAndTime</span> is a full-stack web application built with the MERN stack 
-        (MongoDB, Express.js, React.js, Node.js).  
+        ( React.js,tailwindcss).  
         It allows users to search for any city and get real-time weather data and local time information.
     </p>
 </section>
@@ -28,8 +28,6 @@
     <h2>🛠️ Technologies Used</h2>
     <ul>
         <li><strong>Frontend:</strong> React.js, Tailwind CSS, Axios</li>
-        <li><strong>Backend:</strong> Node.js, Express.js</li>
-        <li><strong>Database:</strong> MongoDB</li>
         <li><strong>External API:</strong> WeatherAPI.com</li>
     </ul>
 </section>
@@ -40,8 +38,6 @@
         <li>Search weather by city name</li>
         <li>Display temperature, humidity, wind speed</li>
         <li>Show weather condition with icon</li>
-        <li>Automatic local time detection</li>
-        <li>Store search history in MongoDB</li>
         <li>Responsive design</li>
     </ul>
 </section>
@@ -56,22 +52,13 @@
     <ul>
         <li>API keys stored in environment variables</li>
         <li>Input validation</li>
-        <li>Sensitive data protected</li>
     </ul>
 </section>
 
-<section>
-    <h2>📈 Future Improvements</h2>
-    <ul>
-        <li>User authentication</li>
-        <li>Dark mode</li>
-        <li>Deployment (Vercel + Render)</li>
-        <li>Personalized dashboard</li>
-    </ul>
-</section>
+
 
 <footer>
-    <p>Developed by Aziz Ben Othmen | MERN Stack Developer</p>
+    <p>Developed by Aziz Ben Othmen </p>
 </footer>
 
 </body>
