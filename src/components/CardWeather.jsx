@@ -6,6 +6,7 @@ const CardWeather = () => {
   const [value, setValue] = useState(null);
   const [city, setCity] = useState("");
   const [Time,setTime]=useState("");
+  const[Icon,SetIcon]=useState("");
   const [showBanner, setShowBanner] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URI;
 
@@ -14,7 +15,7 @@ const CardWeather = () => {
     try {
       const { data } = await axios.get(`${apiUrl}${name}&aqi=no`);
       if (data) {
-        console.log(data.location.localtime.substr(-5));
+        SetIcon(data.current.condition.icon);
         setTime(data.location.localtime.substr(-5));
         setValue(data.current.temp_c);
         setCity(data.location.name);
@@ -31,7 +32,9 @@ const CardWeather = () => {
         <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl p-8 sm:p-12 bg-blue-500 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden">
           <div className="absolute -top-16 -right-16 w-40 h-40 sm:w-52 sm:h-52 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
 
-          <div className="text-4xl sm:text-5xl text-center mb-3">🌤️</div>
+          <div className="text-4xl sm:text-5xl text-center mb-3">
+            <img src={Icon} className="translate-x-25 h-40 w-40"/>
+          </div>
 
           <h1 className="text-center text-white text-xl sm:text-2xl font-bold tracking-wide mb-1">
             Météo
