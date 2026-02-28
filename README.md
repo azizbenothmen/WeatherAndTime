@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>WeatherAndTime - MERN Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
    
@@ -18,7 +17,7 @@
 <section>
     <h2>🚀 Project Overview</h2>
     <p>
-        <span class="highlight">WeatherAndTime</span> is a full-stack web application built with the MERN stack 
+        <span class="highlight">WeatherAndTime</span> is a web application built with 
         ( React.js,tailwindcss).  
         It allows users to search for any city and get real-time weather data and local time information.
     </p>
@@ -42,10 +41,7 @@
     </ul>
 </section>
 
-<section>
-    <h2>📡 Example API Endpoint</h2>
-    <code>GET /api/weather/:city</code>
-</section>
+
 
 <section>
     <h2>🔐 Security</h2>
