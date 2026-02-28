@@ -47,21 +47,6 @@
 </section>
 
 <section>
-    <h2>⚙️ Environment Variables</h2>
-    <p><strong>Server (.env)</strong></p>
-    <code>
-        PORT=5000<br>
-        MONGO_URI=your_mongodb_connection_string<br>
-        WEATHER_API_KEY=your_weather_api_key
-    </code>
-
-    <p style="margin-top:15px;"><strong>Client (.env)</strong></p>
-    <code>
-        VITE_API_URL=http://localhost:5000
-    </code>
-</section>
-
-<section>
     <h2>📡 Example API Endpoint</h2>
     <code>GET /api/weather/:city</code>
 </section>
