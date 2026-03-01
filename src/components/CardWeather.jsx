@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const CardWeather = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,8 @@ const CardWeather = () => {
     try {
       const { data } = await axios.get(`${apiUrl}${name}&aqi=no`);
       if (data) {
-        console.log(data);
+        toast.success(data.location.country);
+        console.log(data.location.country);
         SetIcon(data.current.condition.icon);
         setTime(data.location.localtime.substr(-5));
         setValue(data.current.temp_c);
@@ -23,7 +25,7 @@ const CardWeather = () => {
         setShowBanner(true);
       }
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.message);
     }
   };
 
