@@ -89,6 +89,7 @@ const CardWeather = () => {
               </div>
             </div>
           )}
+          <h2 className="translate-y-7 text-white ">© 2026 AzizBenothmen</h2>
         </div>
       </div>
     </form>

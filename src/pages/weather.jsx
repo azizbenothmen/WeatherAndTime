@@ -7,7 +7,7 @@ const Weather = () => {
     
    <div className='-m-30'>
      <CardWeather/>
-     <Footer/>
+     
 
    </div>
          
