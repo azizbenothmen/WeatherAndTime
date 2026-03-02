@@ -8,6 +8,8 @@ const CardWeather = () => {
   const [city, setCity] = useState("");
   const [Time,setTime]=useState("");
   const[Icon,SetIcon]=useState("");
+  const [SunRise,SetSunRise]=useState("");
+  const [SunSet,SetSunSet]=useState("");
   const [showBanner, setShowBanner] = useState(false);
   const apiUrl = import.meta.env.VITE_API_URI;
 
@@ -17,11 +19,14 @@ const CardWeather = () => {
       const { data } = await axios.get(`${apiUrl}${name}&aqi=no`);
       if (data) {
         toast.success(data.location.country);
-        console.log(data.location.country);
+        console.log(data.forecast.forecastday[0].astro.sunrise);
         SetIcon(data.current.condition.icon);
         setTime(data.location.localtime.substr(-5));
         setValue(data.current.temp_c);
         setCity(data.location.name);
+        SetSunRise(data.forecast.forecastday[0].astro.sunrise);
+        SetSunSet(data.forecast.forecastday[0].astro.sunset);
+
         setShowBanner(true);
       }
     } catch (error) {
@@ -32,7 +37,7 @@ const CardWeather = () => {
   return (
     <form onSubmit={fetchWeather}>
       <div className="min-h-screen w-full flex items-center justify-center font-normal px-4 py-5">
-        <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl p-8 sm:p-12 bg-blue-500 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden translate-y-12">
+        <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl p-8 sm:p-12 bg-blue-500 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden translate-y-20">
           <div className="absolute -top-16 -right-16 w-40 h-40 sm:w-52 sm:h-52 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
 
           <div className="text-4xl sm:text-5xl text-center mb-3">
@@ -67,7 +72,8 @@ const CardWeather = () => {
           </button>
 
           {showBanner && value !== null && (
-            <div className="mt-6 animate-fade-in flex justify-between">
+            <div>
+              <div className="mt-6 animate-fade-in flex justify-between">
               <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
                 <p className="text-white text-xs uppercase tracking-widest mb-1">
                   🌍 {city}
@@ -88,6 +94,30 @@ const CardWeather = () => {
                 </p>
               </div>
             </div>
+            <div className="mt-6 animate-fade-in flex justify-between">
+              <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
+                <p className="text-white text-2xl font-bold tracking-tight">
+                  {SunRise}
+                </p>
+                <p className="text-white/50 text-xs mt-1">
+                  SunRise
+                </p>
+              </div>
+              <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
+                <p className="text-white text-2xl font-bold tracking-tight ">
+                  {SunSet}
+                </p>
+                <p className="text-white/50 text-xs mt-1 ">
+                SunSet
+                </p>
+              </div>
+            </div>
+
+            </div>
+            
+            
+            
+            
           )}
           <h2 className="translate-y-7 text-white ">© 2026 AzizBenothmen</h2>
         </div>
