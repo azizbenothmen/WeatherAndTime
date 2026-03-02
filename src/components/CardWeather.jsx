@@ -6,20 +6,22 @@ const CardWeather = () => {
   const [name, setName] = useState("");
   const [value, setValue] = useState(null);
   const [city, setCity] = useState("");
-  const [Time,setTime]=useState("");
-  const[Icon,SetIcon]=useState("");
-  const [SunRise,SetSunRise]=useState("");
-  const [SunSet,SetSunSet]=useState("");
+  const [Time, setTime] = useState("");
+  const [Icon, SetIcon] = useState("");
+  const [SunRise, SetSunRise] = useState("");
+  const [SunSet, SetSunSet] = useState("");
   const [showBanner, setShowBanner] = useState(false);
+
   const apiUrl = import.meta.env.VITE_API_URI;
 
   const fetchWeather = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(`${apiUrl}${name}&aqi=no`);
+
       if (data) {
         toast.success(data.location.country);
-        console.log(data.forecast.forecastday[0].astro.sunrise);
+
         SetIcon(data.current.condition.icon);
         setTime(data.location.localtime.substr(-5));
         setValue(data.current.temp_c);
@@ -36,90 +38,99 @@ const CardWeather = () => {
 
   return (
     <form onSubmit={fetchWeather}>
-      <div className="min-h-screen w-full flex items-center justify-center font-normal px-4 py-5">
-        <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl p-8 sm:p-12 bg-blue-500 backdrop-blur-2xl border border-white/10 shadow-2xl overflow-hidden translate-y-20">
-          <div className="absolute -top-16 -right-16 w-40 h-40 sm:w-52 sm:h-52 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
+      <div className="min-h-screen w-full flex items-center justify-center px-4">
+        <div className="relative w-full max-w-xs rounded-2xl p-5 bg-blue-500 backdrop-blur-2xl border border-white/10 shadow-xl overflow-hidden translate-y-20">
 
-          <div className="text-4xl sm:text-5xl text-center mb-3">
-            <img src={Icon} className="translate-x-23 h-40 w-40"/>
+          <div className="text-center mb-2">
+            {Icon && (
+              <img
+                src={Icon}
+                alt="weather icon"
+                className="mx-auto h-20 w-20"
+              />
+            )}
           </div>
 
-          <h1 className="text-center text-white text-xl sm:text-2xl font-bold tracking-wide mb-1">
+          <h1 className="text-center text-white text-lg font-bold mb-1">
             Météo
           </h1>
-          <p className="text-center text-white/60 text-xs tracking-widest uppercase mb-8 sm:mb-9">
+
+          <p className="text-center text-white/60 text-xs uppercase mb-5">
             Recherche par pays
           </p>
 
-          <div className="relative mb-4">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-base sm:text-lg opacity-50">
+          
+          <div className="relative mb-3">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 opacity-50">
               🔍
             </span>
+
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Entrez un pays..."
-              className="w-full pl-11 sm:pl-12 pr-4 py-3 sm:py-3.5 bg-white/10 border border-white/15 rounded-2xl text-white placeholder-white/35 text-sm outline-none focus:border-blue-400/70 focus:ring-4 focus:ring-blue-400/10 transition-all duration-200"
+              className="w-full pl-9 pr-3 py-2 bg-white/10 border border-white/15 rounded-xl text-white placeholder-white/40 text-sm outline-none focus:border-blue-400/70 transition"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 sm:py-3.5 rounded-2xl bg-gradient-to-r bg-white text-blue-700 font-semibold tracking-wide text-sm shadow-lg shadow-blue-500/30 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0.5 transition-all duration-150"
+            className="w-full py-2 rounded-xl bg-white text-blue-700 font-semibold text-sm shadow-md hover:opacity-90 transition"
           >
             Chercher
           </button>
 
           {showBanner && value !== null && (
-            <div>
-              <div className="mt-6 animate-fade-in flex justify-between">
-              <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
-                <p className="text-white text-xs uppercase tracking-widest mb-1">
-                  🌍 {city}
-                </p>
-                <p className="text-white text-4xl font-bold tracking-tight">
-                  {value}°C
-                </p>
-                <p className="text-white/50 text-xs mt-1">
-                  Température actuelle
-                </p>
+            <div className="mt-4 space-y-3">
+
+              <div className="flex justify-between gap-2">
+                <div className="bg-white/15 border border-white/25 rounded-xl p-3 text-center flex-1">
+                  <p className="text-white text-xs uppercase">
+                    🌍 {city}
+                  </p>
+                  <p className="text-white text-2xl font-bold">
+                    {value}°C
+                  </p>
+                </div>
+
+                <div className="bg-white/15 border border-white/25 rounded-xl p-3 text-center flex-1">
+                  <p className="text-white text-2xl font-bold">
+                    {Time}
+                  </p>
+                  <p className="text-white/60 text-xs">
+                    Heure locale
+                  </p>
+                </div>
               </div>
-              <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
-                <p className="text-white text-4xl font-bold tracking-tight translate-y-4">
-                  {Time}
-                </p>
-                <p className="text-white/50 text-xs mt-1 translate-y-6">
-                  Temps actuel
-                </p>
+
+              <div className="flex justify-between gap-2">
+                <div className="bg-white/15 border border-white/25 rounded-xl p-3 text-center flex-1">
+                  <p className="text-white text-lg font-bold">
+                    {SunRise}
+                  </p>
+                  <p className="text-white/60 text-xs">
+                    Lever du soleil
+                  </p>
+                </div>
+
+                <div className="bg-white/15 border border-white/25 rounded-xl p-3 text-center flex-1">
+                  <p className="text-white text-lg font-bold">
+                    {SunSet}
+                  </p>
+                  <p className="text-white/60 text-xs">
+                    Coucher du soleil
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="mt-6 animate-fade-in flex justify-between">
-              <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
-                <p className="text-white text-2xl font-bold tracking-tight">
-                  {SunRise}
-                </p>
-                <p className="text-white/50 text-xs mt-1">
-                  SunRise
-                </p>
-              </div>
-              <div className="bg-white/15 border border-white/25 rounded-2xl p-5  backdrop-blur-sm ">
-                <p className="text-white text-2xl font-bold tracking-tight ">
-                  {SunSet}
-                </p>
-                <p className="text-white/50 text-xs mt-1 ">
-                SunSet
-                </p>
-              </div>
-            </div>
 
             </div>
-            
-            
-            
-            
           )}
-          <h2 className="translate-y-7 text-white ">© 2026 AzizBenothmen</h2>
+
+          <h2 className="text-center text-white/70 text-xs mt-4">
+            © 2026 AzizBenothmen
+          </h2>
+
         </div>
       </div>
     </form>
