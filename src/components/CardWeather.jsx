@@ -190,6 +190,9 @@ const CardWeather = () => {
       >
         Retour
       </button>
+      <h2 className="text-center text-white/70 text-xs mt-4">
+              © 2026 AzizBenothmen
+            </h2>
 
     </div>
 
