@@ -5,7 +5,7 @@ const Footer = () => {
 
     
         <p className="text-white text-xl tracking-widest uppercase py-5">
-          © 2026 · Aziz Benothmene
+          © 2026 · Aziz Benothmenen
         </p>
 
       </div>
