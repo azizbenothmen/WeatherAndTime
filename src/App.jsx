@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import Weather from './pages/weather'
+import Weather from './pages/Weather'
 import Time from "./pages/Time"
 import './App.css'
 import { ToastContainer } from 'react-toastify'
