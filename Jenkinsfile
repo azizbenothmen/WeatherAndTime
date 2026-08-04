@@ -7,6 +7,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'echo $DOCKER_HOST'
+                sh 'env | grep -i docker'
                 sh 'docker build -t weatherimage .'
             }
         }
@@ -20,12 +22,7 @@ pipeline {
                 sh 'docker push weatherimage'
             }
         }
-        stage('debug'){
-            steps{
-                sh 'echo $DOCKER_HOST'
-                sh 'env | grep -i docker'
-            }
-        }
+        
     }
     post{
         always{
