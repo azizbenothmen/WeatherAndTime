@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -it weatherimage .'
+                sh 'docker build -t weatherimage .'
             }
         }
         stage('login') {
