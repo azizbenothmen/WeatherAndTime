@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment{
         DOCKERHUB_CREDENTIALS=credentials('docker-token')
-        DOCKER_HOST = ''
     }
 
     stages {
@@ -20,7 +19,7 @@ pipeline {
         }
         stage('push') {
             steps {
-                sh 'docker push weatherimage'
+                sh 'docker push azizbenothmen2/weatherimage'
             }
         }
         
