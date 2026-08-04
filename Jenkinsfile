@@ -19,6 +19,7 @@ pipeline {
         }
         stage('push') {
             steps {
+                sh'docker tag weatherimage azizbenothmen2/weatherimage'
                 sh 'docker push azizbenothmen2/weatherimage'
             }
         }
