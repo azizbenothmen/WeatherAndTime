@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh  'echo $DOCKERHUB_CREDENTIALS_PSW+$DOCKERHUB_CREDENTIALS_USR '
                 sh 'docker build -t weatherimage .'
             }
         }
@@ -18,7 +17,13 @@ pipeline {
         }
         stage('push') {
             steps {
-                echo 'docker push weatherimage'
+                sh 'docker push weatherimage'
+            }
+        }
+        stage('debug'){
+            steps{
+                sh 'echo $DOCKER_HOST'
+                sh 'env | grep -i docker'
             }
         }
     }
