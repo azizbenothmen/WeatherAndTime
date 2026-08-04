@@ -7,12 +7,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh  'echo $DOCKERHUB_CREDENTIALS_PSW+$DOCKERHUB_CREDENTIALS_USR '
                 sh 'docker build -t weatherimage .'
             }
         }
         stage('login') {
             steps {
-                sh  'echo $DOCKERHUB_CREDENTIALS_PSW+$DOCKERHUB_CREDENTIALS_USR '
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
