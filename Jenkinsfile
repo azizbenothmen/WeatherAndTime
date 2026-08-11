@@ -7,8 +7,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo $DOCKER_HOST'
-                sh 'env | grep -i docker'
                 sh 'docker build -t weatherimage .'
             }
         }
