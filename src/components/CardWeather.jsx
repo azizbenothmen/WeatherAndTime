@@ -23,7 +23,7 @@ const CardWeather = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.get(`${apiUrl}${name}&aqi=no`);
+      const { data } = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=d81635f84c494fc2a8312030262702&q=${name}&aqi=no`);
 
       if (data) {
         toast.success(data.location.country);
