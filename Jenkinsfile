@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t weatherimage .'
+                sh 'docker build -t azizbenothmen2/weatherimage:v1.0.0 .'
             }
         }
         stage('login') {
@@ -17,8 +17,7 @@ pipeline {
         }
         stage('push') {
             steps {
-                sh'docker tag weatherimage azizbenothmen2/weatherimage'
-                sh 'docker push azizbenothmen2/weatherimage'
+                sh 'docker push azizbenothmen2/weatherimage:v1.0.0'
             }
         }
         
